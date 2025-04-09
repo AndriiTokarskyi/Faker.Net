@@ -125,7 +125,7 @@ namespace Faker.Net.Test.RandomTest
             MethodInfo fillInRandomDataFromMethodInfo = randomFactoryType.GetMethod("FillInRandomDataFromMethod");
 
             List<string> names = new List<string>();
-            En en = new En();
+            Faker.Locales.En en = new Faker.Locales.En();
             foreach (var n in en.FirstName) names.Add(n);
             //foreach (var n in en.MaleFirstName) names.Add(n);
             //foreach (var n in en.FemaleFirstName) names.Add(n);
