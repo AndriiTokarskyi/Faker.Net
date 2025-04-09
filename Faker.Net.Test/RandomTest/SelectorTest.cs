@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using Faker.Random;
+using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Faker.Net.Test.RandomTest
@@ -8,6 +8,20 @@ namespace Faker.Net.Test.RandomTest
     [TestClass]
     public class SelectorTest
     {
+        private static object GetSelectorInstance()
+        {
+            var selectorType = Type.GetType("Faker.Random.Selector, Faker.Net");
+            var instanceProperty = selectorType.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static);
+            return instanceProperty.GetValue(null);
+        }
+
+        private static List<T> InvokeGetMultipleRandomItemsFromList<T>(IList<T> source, int count)
+        {
+            var selectorInstance = GetSelectorInstance();
+            var methodInfo = selectorInstance.GetType().GetMethod("GetMultipleRandomItemsFromList", BindingFlags.Public | BindingFlags.Instance);
+            return (List<T>)methodInfo.Invoke(selectorInstance, new object[] { source, count });
+        }
+
         [TestMethod]
         public void TestMultupleSelect()
         {
@@ -22,7 +36,7 @@ namespace Faker.Net.Test.RandomTest
             for (int i = 0; i < sourceSize; i++) resultCount.Add(i, 0);
             for (int i = 0; i < iter; i++)
             {
-                var result = Selector.GetMultipleRandomItemsFromList(source, selectionSize);
+                var result = InvokeGetMultipleRandomItemsFromList(source, selectionSize);
                 foreach (var r in result) resultCount[r]++;
             }
 
