@@ -1,13 +1,14 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Faker.Random;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Faker.Net.Test.RandomTest
 {
+    [TestClass]
     public class SelectorTest
     {
-        [Fact]
+        [TestMethod]
         public void TestMultupleSelect()
         {
             // Test the even distribution
@@ -27,7 +28,7 @@ namespace Faker.Net.Test.RandomTest
 
             foreach(var kvp in resultCount)
             {
-                Assert.True(Math.Abs(kvp.Value / (float)iter - (float)selectionSize / sourceSize) <= accuracy);
+                Assert.IsTrue(Math.Abs(kvp.Value / (float)iter - (float)selectionSize / sourceSize) <= accuracy);
             }
         }
     }
