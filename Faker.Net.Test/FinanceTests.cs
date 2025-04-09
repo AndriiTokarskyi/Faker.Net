@@ -1,6 +1,7 @@
 using System.Linq;
 using Faker.Locales;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MSTest.TestFramework;
 
 namespace Faker.Tests
 {
