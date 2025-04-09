@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Linq;
-using System.Web.Security;
+using System.Security.Cryptography;
 using Faker.Random;
 
 namespace Faker
@@ -19,7 +19,13 @@ namespace Faker
         public virtual string GetPassword() { return this.GetPassword(15); }
         public virtual string GetPassword(int length)
         {
-            return Membership.GeneratePassword(length, length >> 2);
+            const string validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+-=[]{}|;:,.<>?";
+using (var rng = RandomNumberGenerator.Create())
+            {
+                byte[] data = new byte[length];
+                rng.GetBytes(data);
+                return new string(data.Select(b => validChars[b % validChars.Length]).ToArray());
+            }
         }
 
         public virtual string GetAvatarURL()
