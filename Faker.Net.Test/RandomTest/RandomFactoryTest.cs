@@ -124,11 +124,12 @@ namespace Faker.Net.Test.RandomTest
             // Use reflection to get the FillInRandomDataFromMethod
             MethodInfo fillInRandomDataFromMethodInfo = randomFactoryType.GetMethod("FillInRandomDataFromMethod");
 
-            // Create a Name instance to get first names
-            Name name = new Name();
-            List<string> names = new List<string>(name.GetFirstNames());
-
-            for (int i = 0; i < 100000; i++)
+            List<string> names = new List<string>();
+            En en = new En();
+            foreach (var n in en.FirstName) names.Add(n);
+            //foreach (var n in en.MaleFirstName) names.Add(n);
+            //foreach (var n in en.FemaleFirstName) names.Add(n);
+            for (int i  = 0; i < 100000; i++)
             {
                 var result = (string)fillInRandomDataFromMethodInfo.Invoke(random, new object[] { pattern });
                 System.Diagnostics.Debug.Assert(names.Contains(result));
