@@ -1,13 +1,13 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using System;
 using System.Reflection;
 
 namespace Faker.Net.Test.LocaleTest
 {
-    [TestClass]
+    [TestFixture]
     public class En
     {
-        [TestMethod]
+        [Test]
         public void TestCurrencyRead()
         {
             var fakerAssembly = typeof(Faker.Name).Assembly;
