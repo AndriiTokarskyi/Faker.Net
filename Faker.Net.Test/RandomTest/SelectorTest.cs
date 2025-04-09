@@ -1,7 +1,6 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using Faker;
+using Faker.Random;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Faker.Net.Test.RandomTest
@@ -17,12 +16,13 @@ namespace Faker.Net.Test.RandomTest
             const int sourceSize = 40;
             const int selectionSize = 5;
             const float accuracy = 0.01f;
-            int[] source = Enumerable.Range(0, sourceSize).ToArray();
-            Dictionary<int, int> resultCount = source.ToDictionary(i => i, _ => 0);
-
+            int[] source = new int[sourceSize];
+            for (int i = 0; i < sourceSize; i++) source[i] = i;
+            Dictionary<int, int> resultCount = new Dictionary<int, int>();
+            for (int i = 0; i < sourceSize; i++) resultCount.Add(i, 0);
             for (int i = 0; i < iter; i++)
             {
-                var result = RandomNumber.Shuffle(source).Take(selectionSize);
+                var result = Selector.GetMultipleRandomItemsFromList(source, selectionSize);
                 foreach (var r in result) resultCount[r]++;
             }
 
