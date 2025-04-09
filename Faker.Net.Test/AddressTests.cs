@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Faker.Tests
 {
-    [TestClass]
+    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClass]
     public class AddressTests
     {
-        [TestMethod]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
         public void GetStreetNameTest()
         {
             Address address = new Address();
@@ -13,13 +13,13 @@ namespace Faker.Tests
 
         }
 
-        [TestMethod]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
         public void GetCityNameTest()
         {
 
         }
 
-        [TestMethod]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
         public void GetCityPrefixTest()
         {
 
