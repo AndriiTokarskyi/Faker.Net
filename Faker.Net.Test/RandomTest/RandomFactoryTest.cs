@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Faker.Locales;
 using Faker.Random;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MSTest.TestFramework;
 
 namespace Faker.Net.Test.RandomTest
 {
