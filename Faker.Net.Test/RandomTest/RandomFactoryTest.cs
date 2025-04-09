@@ -6,10 +6,10 @@ using Faker.Random;
 
 namespace Faker.Net.Test.RandomTest
 {
-    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClass]
+    [TestClass]
     public class RandomFactoryTest
     {
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
+        [TestMethod]
         public void TestRandomSelection()
         {
             int i = RandomProxy.Next();
@@ -26,7 +26,7 @@ namespace Faker.Net.Test.RandomTest
             System.Diagnostics.Debug.Assert(Array.Exists(d.Test1, n => n == result));
         }
 
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
+        [TestMethod]
         public void TestRandomFillin()
         {
             int m = RandomProxy.Next();
@@ -44,7 +44,7 @@ namespace Faker.Net.Test.RandomTest
             }
         }
 
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
+        [TestMethod]
         public void TestNextMethod1()
         {
             int m = RandomProxy.Next();
@@ -61,7 +61,7 @@ namespace Faker.Net.Test.RandomTest
             }
         }
 
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
+        [TestMethod]
         public void TestNextMethod2()
         {
             int m = RandomProxy.Next(2, 100);
@@ -76,7 +76,7 @@ namespace Faker.Net.Test.RandomTest
             System.Diagnostics.Debug.Assert(numbers[0] != numbers[1]);
         }
 
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
+        [TestMethod]
         public void TestFakerBaseDictionary()
         {
             Name n = new Name();
@@ -84,7 +84,7 @@ namespace Faker.Net.Test.RandomTest
             System.Diagnostics.Debug.Assert(n.GetType() == random.GetFakerObjectFromName("Name").GetType());
         }
 
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
+        [TestMethod]
         public void TestFakerFillIn()
         {
             string pattern = "@{Name.GetFirstName}";
