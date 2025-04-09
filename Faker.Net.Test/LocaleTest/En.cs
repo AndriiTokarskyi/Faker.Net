@@ -4,10 +4,10 @@ using System.Reflection;
 
 namespace Faker.Net.Test.LocaleTest
 {
-    [Microsoft.VisualStudio.TestTools.UnitTesting.TestClass]
+    [TestClass]
     public class En
     {
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
+        [TestMethod]
         public void TestCurrencyRead()
         {
             var fakerAssembly = typeof(Faker.Name).Assembly;
