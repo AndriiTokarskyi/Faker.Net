@@ -24,7 +24,7 @@ namespace Faker.Net.Test.RandomTest
             MethodInfo getRandomItemMethod = randomFactoryType.GetMethod("GetRandomItemFromProperty");
             var result = (int)getRandomItemMethod.Invoke(r, new object[] { "Test1", d });
 
-            Assert.IsTrue(Array.Exists(d.Test1, n => n == result));
+            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(Array.Exists(d.Test1, n => n == result));
         }
 
         [TestMethod]
