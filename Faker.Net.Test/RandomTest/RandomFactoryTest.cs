@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using Faker.Locales;
 using Faker.Random;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Faker.Net.Test.RandomTest
 {
@@ -24,7 +23,7 @@ namespace Faker.Net.Test.RandomTest
             MethodInfo getRandomItemMethod = randomFactoryType.GetMethod("GetRandomItemFromProperty");
             var result = (int)getRandomItemMethod.Invoke(r, new object[] { "Test1", d });
 
-            Assert.IsTrue(Array.Exists(d.Test1, n => n == result));
+            System.Diagnostics.Debug.Assert(Array.Exists(d.Test1, n => n == result));
         }
 
         [TestMethod]
@@ -39,9 +38,9 @@ namespace Faker.Net.Test.RandomTest
             {
                 var result = r.FillInRandomData<int>(format, d);
                 string[] numbers = result.Split(' ');
-                Assert.AreEqual(numbers.Length, 2);
-                Assert.IsTrue(Array.Exists(d.Test1, n => n == int.Parse(numbers[0])));
-                Assert.IsTrue(Array.Exists(d.Test2, n => n == int.Parse(numbers[1])));
+                System.Diagnostics.Debug.Assert(numbers.Length == 2);
+                System.Diagnostics.Debug.Assert(Array.Exists(d.Test1, n => n == int.Parse(numbers[0])));
+                System.Diagnostics.Debug.Assert(Array.Exists(d.Test2, n => n == int.Parse(numbers[1])));
             }
         }
 
@@ -56,9 +55,9 @@ namespace Faker.Net.Test.RandomTest
             {
                 var result = r.Next<int>(format);
                 string[] numbers = result.Split(' ');
-                Assert.AreEqual(numbers.Length, 2);
-                Assert.IsTrue(Array.Exists(d.Test1, n => n == int.Parse(numbers[0])));
-                Assert.IsTrue(Array.Exists(d.Test2, n => n == int.Parse(numbers[1])));
+                System.Diagnostics.Debug.Assert(numbers.Length == 2);
+                System.Diagnostics.Debug.Assert(Array.Exists(d.Test1, n => n == int.Parse(numbers[0])));
+                System.Diagnostics.Debug.Assert(Array.Exists(d.Test2, n => n == int.Parse(numbers[1])));
             }
         }
 
@@ -71,10 +70,10 @@ namespace Faker.Net.Test.RandomTest
             var r = new RandomFactory(d, LocaleType.en);
             var result = r.Next<int>(format);
             string[] numbers = result.Split(' ');
-            Assert.AreEqual(numbers.Length, 2);
-            Assert.IsTrue(Array.Exists(d.Test1, n => n == int.Parse(numbers[0])));
-            Assert.IsTrue(Array.Exists(d.Test1, n => n == int.Parse(numbers[0])));
-            Assert.IsTrue(numbers[0] != numbers[1]);
+            System.Diagnostics.Debug.Assert(numbers.Length == 2);
+            System.Diagnostics.Debug.Assert(Array.Exists(d.Test1, n => n == int.Parse(numbers[0])));
+            System.Diagnostics.Debug.Assert(Array.Exists(d.Test1, n => n == int.Parse(numbers[0])));
+            System.Diagnostics.Debug.Assert(numbers[0] != numbers[1]);
         }
 
         [TestMethod]
@@ -82,7 +81,7 @@ namespace Faker.Net.Test.RandomTest
         {
             Name n = new Name();
             RandomFactory random = new RandomFactory(null, LocaleType.en);
-            Assert.AreEqual(n.GetType(), random.GetFakerObjectFromName("Name").GetType());
+            System.Diagnostics.Debug.Assert(n.GetType() == random.GetFakerObjectFromName("Name").GetType());
         }
 
         [TestMethod]
@@ -99,7 +98,7 @@ namespace Faker.Net.Test.RandomTest
             for (int i  = 0; i < 100000; i++)
             {
                 var result = random.FillInRandomDataFromMethod(pattern);
-                Assert.IsTrue(names.Contains(result));
+                System.Diagnostics.Debug.Assert(names.Contains(result));
             }
         }
         public class DummyClass
