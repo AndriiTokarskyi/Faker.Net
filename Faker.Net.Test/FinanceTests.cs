@@ -4,10 +4,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Faker.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class FinanceTests
     {
-        [TestMethod()]
+        [TestMethod]
         public void GetCurrencyNameTest()
         {
             var currencyName = Finance.Default.GetCurrencyName();
