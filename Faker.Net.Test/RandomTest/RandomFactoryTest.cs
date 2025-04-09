@@ -4,6 +4,7 @@ using System.Reflection;
 using Faker.Locales;
 using Faker.Random;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NuGet.Frameworks;
 
 namespace Faker.Net.Test.RandomTest
 {
