@@ -1,13 +1,13 @@
 using System.Linq;
 using Faker.Locales;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Faker.Tests
 {
-    [TestClass]
+    [TestFixture]
     public class FinanceTests
     {
-        [TestMethod]
+        [Test]
         public void GetCurrencyNameTest()
         {
             var currencyName = Finance.Default.GetCurrencyName();
