@@ -1,5 +1,4 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Faker;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Faker.Tests
 {
