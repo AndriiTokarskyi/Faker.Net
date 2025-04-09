@@ -1,16 +1,15 @@
 using Faker.Locales;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MSTest = Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace Faker.Net.Test.LocaleTest
 {
-    [MSTest.TestClass]
+    [TestFixture]
     public class LocaleFactoryTest
     {
-        [MSTest.TestMethod]
+        [Test]
         public void TestCreate()
         {
-            Assert.AreEqual(typeof(En), LocaleFactory.Create(LocaleType.en).GetType());
+            Assert.That(LocaleFactory.Create(LocaleType.en).GetType(), Is.EqualTo(typeof(En)));
         }
     }
 }
