@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Reflection;
 using Faker.Locales;
 using Faker.Random;
-using Xunit;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Faker.Net.Test.RandomTest
 {
+    [TestClass]
     public class RandomFactoryTest
     {
-        [Fact]
+        [TestMethod]
         public void TestRandomSelection()
         {
             int i = RandomProxy.Next();
