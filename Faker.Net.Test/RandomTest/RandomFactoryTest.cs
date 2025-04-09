@@ -10,7 +10,7 @@ namespace Faker.Net.Test.RandomTest
     [TestClass]
     public class RandomFactoryTest
     {
-        [TestMethod]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
         public void TestRandomSelection()
         {
             int i = RandomProxy.Next();
