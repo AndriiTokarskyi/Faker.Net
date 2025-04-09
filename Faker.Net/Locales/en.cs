@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Web.Script.Serialization;
+using System.Text.Json;
 
 namespace Faker.Locales
 {
@@ -6393,11 +6393,12 @@ namespace Faker.Locales
         {
             get
             {
-                var jsSerializer = new JavaScriptSerializer();
                 var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("Faker.Locales.Resources.Finance.json");
                 stream.Position = 0;
-                var dic = jsSerializer.DeserializeObject(new StreamReader(stream).ReadToEnd());
-                return dic as Dictionary<string, Object>;
+using var reader = new StreamReader(stream);
+                var jsonString = reader.ReadToEnd();
+                var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
+                return JsonSerializer.Deserialize<Dictionary<string, object>>(jsonString, options);
             }
         }
         #endregion
