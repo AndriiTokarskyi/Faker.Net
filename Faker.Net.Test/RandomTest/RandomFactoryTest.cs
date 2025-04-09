@@ -1,8 +1,9 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Faker.Locales;
 using Faker.Random;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using MSTest = Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Faker.Net.Test.RandomTest
 {
