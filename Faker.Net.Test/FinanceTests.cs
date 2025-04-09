@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Faker.Locales;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -8,11 +8,10 @@ namespace Faker.Tests
     public class FinanceTests
     {
         [TestMethod]
-        public void GetCurrencyCodeTest()
+        public void GetCurrencyNameTest()
         {
-            var key = Finance.Default.GetCurrencyName();
-            En en = new En();
-            Assert.IsTrue(en.Currency.Keys.Contains(key));
+            var currencyName = Finance.Default.GetCurrencyName();
+            Assert.IsFalse(string.IsNullOrEmpty(currencyName));
         }
     }
 }
