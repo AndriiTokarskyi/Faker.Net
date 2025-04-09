@@ -11,7 +11,7 @@ namespace Faker.Tests
         public void GetCurrencyNameTest()
         {
             var currencyName = Finance.Default.GetCurrencyName();
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsFalse(string.IsNullOrEmpty(currencyName));
+            Assert.IsFalse(string.IsNullOrEmpty(currencyName));
         }
     }
 }
