@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Faker.Locales;
 using Faker.Random;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -14,8 +15,15 @@ namespace Faker.Net.Test.RandomTest
         {
             int i = RandomProxy.Next();
             DummyClass d = new DummyClass(i);
-            var r = new RandomFactory(d, LocaleType.en);
-            var result = r.GetRandomItemFromProperty<int>("Test1", d);
+
+            // Use reflection to create an instance of RandomFactory
+            Type randomFactoryType = typeof(RandomProxy).Assembly.GetType("Faker.Random.RandomFactory");
+            object r = Activator.CreateInstance(randomFactoryType, d, LocaleType.en);
+
+            // Use reflection to call GetRandomItemFromProperty
+            MethodInfo getRandomItemMethod = randomFactoryType.GetMethod("GetRandomItemFromProperty");
+            var result = (int)getRandomItemMethod.Invoke(r, new object[] { "Test1", d });
+
             Assert.IsTrue(Array.Exists(d.Test1, n => n == result));
         }
 
