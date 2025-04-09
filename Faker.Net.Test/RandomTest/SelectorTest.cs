@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Faker.Random;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -8,7 +8,7 @@ namespace Faker.Net.Test.RandomTest
     [TestClass]
     public class SelectorTest
     {
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethod]
+        [TestMethod]
         public void TestMultupleSelect()
         {
             // Test the even distribution
