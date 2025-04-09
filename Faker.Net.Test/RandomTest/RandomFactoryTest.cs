@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Reflection;
 using Faker.Locales;
 using Faker.Random;
+using NUnit.Framework;
 
 namespace Faker.Net.Test.RandomTest
 {
-    [TestClass]
+    [TestFixture]
     public class RandomFactoryTest
     {
-        [TestMethod]
+        [Test]
         public void TestRandomSelection()
         {
             int i = RandomProxy.Next();
@@ -26,7 +27,7 @@ namespace Faker.Net.Test.RandomTest
             System.Diagnostics.Debug.Assert(Array.Exists(d.Test1, n => n == result));
         }
 
-        [TestMethod]
+        [Test]
         public void TestRandomFillin()
         {
             int m = RandomProxy.Next();
@@ -50,7 +51,7 @@ namespace Faker.Net.Test.RandomTest
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestNextMethod1()
         {
             int m = RandomProxy.Next();
@@ -74,7 +75,7 @@ namespace Faker.Net.Test.RandomTest
             }
         }
 
-        [TestMethod]
+        [Test]
         public void TestNextMethod2()
         {
             int m = RandomProxy.Next(2, 100);
@@ -96,7 +97,7 @@ namespace Faker.Net.Test.RandomTest
             System.Diagnostics.Debug.Assert(numbers[0] != numbers[1]);
         }
 
-        [TestMethod]
+        [Test]
         public void TestFakerBaseDictionary()
         {
             Name n = new Name();
@@ -112,7 +113,7 @@ namespace Faker.Net.Test.RandomTest
             System.Diagnostics.Debug.Assert(n.GetType() == result.GetType());
         }
 
-        [TestMethod]
+        [Test]
         public void TestFakerFillIn()
         {
             string pattern = "@{Name.GetFirstName}";
