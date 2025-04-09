@@ -116,8 +116,14 @@ namespace Faker.Net.Test.RandomTest
         public void TestFakerFillIn()
         {
             string pattern = "@{Name.GetFirstName}";
-            RandomFactory random = new RandomFactory(null, LocaleType.en);
-            
+
+            // Use reflection to create an instance of RandomFactory
+            Type randomFactoryType = typeof(RandomProxy).Assembly.GetType("Faker.Random.RandomFactory");
+            object random = Activator.CreateInstance(randomFactoryType, null, LocaleType.en);
+
+            // Use reflection to get the FillInRandomDataFromMethod
+            MethodInfo fillInRandomDataFromMethodInfo = randomFactoryType.GetMethod("FillInRandomDataFromMethod");
+
             List<string> names = new List<string>();
             En en = new En();
             foreach (var n in en.FirstName) names.Add(n);
@@ -125,7 +131,7 @@ namespace Faker.Net.Test.RandomTest
             //foreach (var n in en.FemaleFirstName) names.Add(n);
             for (int i  = 0; i < 100000; i++)
             {
-                var result = random.FillInRandomDataFromMethod(pattern);
+                var result = (string)fillInRandomDataFromMethodInfo.Invoke(random, new object[] { pattern });
                 System.Diagnostics.Debug.Assert(names.Contains(result));
             }
         }
