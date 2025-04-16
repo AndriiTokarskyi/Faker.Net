@@ -11,7 +11,7 @@ namespace Faker.Net.Example
         static void Main(string[] args)
         {
             Console.OutputEncoding = Encoding.Unicode;
-            Console.WriteLine($"Running on\nOS: {Environment.OSVersion},\nFramework : {Environment.Version}\n");
+            Console.WriteLine($"Running on\nOS: {Environment.OSVersion}\nFramework : {Environment.Version}\n");
             Console.WriteLine("Welcome to the Faker.Net example. Please enter number to choose locale");
             LocaleType chosenLocale = LocaleType.en;
             string result = "";
